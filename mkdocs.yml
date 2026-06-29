@@ -1,18 +1,34 @@
-site_name: Ananastushok portfolio # Название сайта
-site_description: Проект для курса # Описание сайта, добавляется в meta-теги
+site_name: Сайт технических писателей # Название сайта
+site_description: Проект для техписов # Описание сайта, добавляется в meta-теги
 theme: # Тема сайта, информация о ее параметрах
+  variant: classic
   name: material # Название темы
   logo: images/cat-in-black-silhouette-svgrepo-com.svg # Ссылка на логотип сайта, логотип добавляется в папку `docs/images`
+  favicon: images/black-cat-cat-svgrepo-com.svg # Ссылка на иконку сайта, которая отображается в названии вкладки, добавляется в папку `docs/images`
   font:
     text: Arial # Шрифт текста
     code: Roboto Mono # Шрифт для текста кода
+  features: # настройки функциональностей темы
+    - navigation.indexes # Позволяет создавать корневые страницы разделов меню. Корневая страница должна лежать в папке раздела и называться index.md
+    #- navigation.path # Хлебные крошки
+    - navigation.tabs # Верхнее меню
+    - navigation.tabs.sticky # Фиксация верхнего меню
+    #- navigation.sections # Настройка спойлеров в левом меню
+    #- navigation.expand # Разворачивает спойлеры в левом меню по умолчанию
+    #- toc.integrate # Фиксирует оглавление страницы в левом меню
+    - navigation.instant # Функция быстрой загрузки страниц
+    - navigation.top # Добавляет кнопку «к началу» для быстрой обратной прокрутки страницы
+    - search.suggest # Подсказки при вводе поискового запроса
+    - search.highlight # Подсветка результатов поиска в тексте страницы
+    - content.code.copy # Кнопка копирования в блоке кода
+
   language: ru # Язык
   palette: # Настройки светлой и тёмной тем
     # Настройки светлой темы
-    - scheme: default 
+    - scheme: my-scheme 
       toggle:
         icon: material/weather-sunny # Иконка для активации светлой темы
-        name: Тёмная ночь # Всплывающий текст-подсказка
+        name: Выключить солнышко # Всплывающий текст-подсказка
       primary: pink # Основной цвет
       accent: purple # Акцентный цвет
       # вы можете использовать любой цвет из списка: 
@@ -24,25 +40,46 @@ theme: # Тема сайта, информация о ее параметрах
     - scheme: slate
       toggle:
         icon: material/weather-night
-        name: Ясный день
+        name: Включить солнышко
       primary: deep purple
       accent: blue
-  features: # настройки функциональностей темы
-    - navigation.sections # Добавление разделов верхнего уровня в боковом меню, отключение спойлеров в боковом меню
-    - navigation.path # Хлебные крошки
-    - navigation.indexes # Позволяет создавать корневые страницы разделов меню. Корневая страница должна лежать в папке раздела и называться index.md. Пример использования корневых страниц приведен ниже в настройках nav
-    - navigation.tabs # Верхнее меню
-    - navigation.tabs.sticky # Фиксация верхнего меню
-    - navigation.expand # Разворачивает спойлеры в левом меню по умолчанию
-    - toc.integrate # Фиксирует оглавление страницы в левом меню
-    - navigation.instant # Функция быстрой загрузки страниц
-    - navigation.top # Добавляет кнопку «к началу» для быстрой обратной прокрутки страницы
-    - search.suggest # Подсказки при вводе поискового запроса
-    - search.highlight # Подсветка результатов поиска в тексте страницы
-    - content.code.copy # Кнопка копирования в блоке кодаsite_name: My Docs
+
+plugins:
+  - search # Плагин для подключения поиска на портале
+  - glightbox # Плагин для картинок
+  - tags: # Плагин для создания системы тегов
+      tags_allowed:
+      - Инструкция
+      - Git
+      - MS Word
+      - Day-Off
+      - OnBoarding
+      - Документация
+      - Exsel
+      - Overtime work
+      - MKDocs
+      - Markdown
+      - Шаблоны
+      - Стандарты
+
 nav: # Структура сайта
   - Главная страница: index.md
-  - Некие инструкции: Ananastushok-gift-instruction.md
+  - OnBoarding: onboarding.md
+  - Правила оформления и редактирования: 
+    - Чек-лист проверки документа: check-list.md
+    - Правила присваивания децимальных номеров: decimal_numbers.md
+    - Редполитика документации: redpolitika.md
+    - Шаблоны документов: templates.md
+    - Перечень действующих стандартов для АС: standarts.md
+  - Инструкции: 
+    - Word и Excel: Instructions_word.md
+    - Alt-коды и сочетания клавиш для ввода спецсимоволов: codes.md
+    - Git: git.md
+    - Markdown: mkdocs.md
+
+extra_css:
+  - css/extra.css
+
 markdown_extensions: # Расширения markdown
   - admonition # Поддержка информационных панелей (сообщений типа «Внимание», «Совет», «Примечание», etc.)
   - footnotes # Поддержка встроенных сносок на страницах
@@ -55,8 +92,7 @@ markdown_extensions: # Расширения markdown
   - pymdownx.highlight: # Подсветка синтаксиса в блоках кода
       anchor_linenums: true
   - pymdownx.superfences # Поддержка вложенных блоков кода
+  - attr_list # Поддержка скачивания файлов с помощью атрибута `download` в ссылках
   - pymdownx.emoji: # Иконки и эмодзи
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-plugins:
-  - search # Плагин для подключения поиска на портале
