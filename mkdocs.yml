@@ -96,3 +96,9 @@ markdown_extensions: # Расширения markdown
   - pymdownx.emoji: # Иконки и эмодзи
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.caret # Использование подчеркивания текста
+  - pymdownx.mark # Использование выделения текста
+  - pymdownx.tilde # Использование зачеркивания текста
+  - pymdownx.tasklist: # Использование чекбоксов в списках
+      custom_checkbox: true
+      clickable_checkbox: true
